@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# evitar que siga la ejecución si hay algún error
+set -e
+
+user=$1

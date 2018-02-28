@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# evitar que siga la ejecución si hay algún error
+set -e
+
+user=$1
+if [ -z $user ] # -z comprueba que user tenga la contraseña.
+then
+	echo "Indica un nombre de usuario"
+	exit
+fi
+function print_shadow {
+	echo -e "\nshadow"
+	cat /etc/shadow | grep $user
+}
+#===================Comienzo del usuario
+
+echo "Creando el usuario $user"
+useradd $user
+
+echo -e "/npasswd"
+cat /etc/passwd | grep $user
+"usuarios_basico.sh" 30L, 493C
