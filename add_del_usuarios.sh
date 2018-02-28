@@ -7,19 +7,20 @@ if [ $OPERATION == add ]
 then
       if [ $USERNAME != `cat /etc/passwd | cut -d':' -f1` ]
       then
-      echo "Creando usuario $USERNAME ..."
-      adduser $USERNAME
+            echo "Creando usuario $USERNAME ..."
+            adduser $USERNAME
+            exit
       else
-      exit
+            exit
       fi
-fi
-if [ $OPERATION == del] 
+elif [ $OPERATION == del] 
 then	
-if [ $USERNAME == `cat /etc/passwd | cut -d':' -f1 ] 
-then
-echo "Borrando usuario $USERNAME ..." 
-userdel $USERNAME 
-else
-exit
-fi
+      if [ $USERNAME == `cat /etc/passwd | cut -d':' -f1 ] 
+      then
+            echo "Borrando usuario $USERNAME ..." 
+            userdel $USERNAME 
+            exit
+      else
+            exit
+      fi
 fi
